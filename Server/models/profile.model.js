@@ -12,7 +12,14 @@ const profileSchema = new Schema({
       ref: 'Course',
       default: null
     }
-  ]
+  ],
+  address : {
+    type: String
+  },
+  address_id:{
+    type: String,
+    unique:true
+  }
 });
 
 const Profile = mongoose.model('Profile', profileSchema);
