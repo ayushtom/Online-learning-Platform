@@ -9,6 +9,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
+//for fetching images
+app.use('/api', require('./routes/image'))
+
 const userRoute = require('./routes/user.route');
 const profileRoute = require('./routes/profile.routes');
 const courseRoute = require('./routes/course.routes');
