@@ -12,7 +12,7 @@ const quizSchema = new mongoose.Schema({
       ans: { type: String, required: true }
     }
   ],
-  attempt: { type: Boolean, default: false }
+  date: { type: Date, default: Date.now() }
 });
 
 module.exports = mongoose.model('Quiz', quizSchema);

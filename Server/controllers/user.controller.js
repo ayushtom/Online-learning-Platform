@@ -85,9 +85,8 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid Credentials' });
 
     //Assigning Json Web Token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '3h'
-    });
+    //, {      expiresIn: '3h'    }
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.status(200).json({
       token,
       user: {
@@ -121,10 +120,11 @@ const tokenIsValid = async (req, res) => {
 const getLoggedInUser = async (req, res) => {
   try {
     const user = await User.findById(req.user);
-    res.json({
-      id: user._id,
-      username: user.username
-    });
+    // res.json({
+    //   id: user._id,
+    //   username: user.username
+    // });
+    res.json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
