@@ -7,7 +7,7 @@ import HomeComponent from './HomeComponent';
     return (
         <div className="Main">
             
-            {/* <Login/> */}
+            <Login/>
             <HomeComponent/>
         </div>
     )
