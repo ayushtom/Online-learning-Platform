@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 //------------------------------------------------------REGISTER------------------------------------------------------
 const register = async (req, res) => {
   try {
-    let { username, email, password, passwordCheck } = req.body;
+    let { username, email, password, passwordCheck, role } = req.body;
 
     //===========================Validation===========================
 
@@ -40,11 +40,22 @@ const register = async (req, res) => {
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
-    const newUser = new User({
-      username,
-      email,
-      password: passwordHash
-    });
+    let newUser;
+    if (role === 1) {
+      newUser = new User({
+        username,
+        email,
+        password: passwordHash,
+        role: 1
+      });
+    } else {
+      newUser = new User({
+        username,
+        email,
+        password: passwordHash,
+        role: 0
+      });
+    }
     const savedUser = await newUser.save();
     res.status(200).json(savedUser);
   } catch (error) {
@@ -91,7 +102,8 @@ const login = async (req, res) => {
       token,
       user: {
         id: user._id,
-        username: user.username
+        username: user.username,
+        role: user.role
       }
     });
   } catch (error) {

@@ -12,6 +12,16 @@ const quizSchema = new mongoose.Schema({
       ans: { type: String, required: true }
     }
   ],
+  marks: [
+    {
+      u_id: { type: mongoose.Schema.Types.ObjectId, required: true },
+      // ref: 'User',
+      m: {
+        got: { type: Number, required: true },
+        outOf: { type: Number, required: true }
+      }
+    }
+  ],
   date: { type: Date, default: Date.now() }
 });
 
