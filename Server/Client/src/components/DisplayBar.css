@@ -1,0 +1,37 @@
+.container1{
+    width: 100%;
+}
+
+.bread{
+    align-content: center;
+    display: inline;
+}
+
+.MiddleContent{
+    /* width: 20px; */
+    height: 80vh;
+    margin-left:2px;
+    overflow:scroll;
+}
+
+#element1 {
+    display:inline-block;
+    margin-right:10px;
+}
+ 
+#element2 {
+    display:inline-block;
+    align-self: flex-end;
+    /* position:relative;  */
+    /* left:150%; */
+} 
+
+.navbar1{
+    margin-top: 60px;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+}

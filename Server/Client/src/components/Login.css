@@ -1,0 +1,50 @@
+.jumbotron {
+    margin-top: 50px;
+    background-color: snow;
+  }
+  .card {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(147, 211, 236);
+    box-shadow: 10px 10px 5px grey;
+  }
+  
+  hr {
+    width: 70%;
+  }
+
+  .container{
+      padding-left: 20%;
+      
+  }
+
+  .jumbotron{
+    box-shadow: 10px 10px 5px grey;
+  }
+
+
+ .box{
+    
+     padding-left: 30%;
+     padding-right: 5px;
+ }
+ 
+
+ .login{
+   width: 45%;
+   height: 60%;
+ }
+
+
+
+
+ /* Login */
+
+ .ButtonLogin{
+   
+   border: solid 2px black;
+   margin:15% 35% 5% 35%;
+   padding-top: 50px;
+   padding-bottom: 50px;
+   border-radius: 20px;
+ }
