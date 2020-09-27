@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const courseSchema = new mongoose.Schema({
-  c_img: String,
+  
   c_name: { type: String, required: true },
   c_detail: { type: String, required: true },
   video: [
@@ -10,7 +10,7 @@ const courseSchema = new mongoose.Schema({
   content: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'Content', default: null }
   ],
-  quiz: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Quiz', default: null }] //,
+  quiz: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Quiz', default: null }] ,//,
   // quiz_result: [
   //   {
   //     quiz_name: { type: String, required: true },
@@ -18,6 +18,16 @@ const courseSchema = new mongoose.Schema({
   //     attempt: { type: Boolean, default: false }
   //   }
   // ]
+
+  address : {
+    type: String
+  },
+  address_id:{
+    type: String,
+    unique:true
+  }
 });
+
+
 
 module.exports = mongoose.model('Course', courseSchema);

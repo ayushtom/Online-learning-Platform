@@ -1,11 +1,66 @@
 const Course = require('../models/course.model');
 const Quiz = require('../models/quiz.model');
+const express = require('express')
+const mongoose = require('mongoose')
+const multer = require('multer')
+const GridFsStorage = require('multer-gridfs-storage')
+const Grid = require('gridfs-stream')
+const path = require('path')
+const config = require('config');
+const crypto = require('crypto');
+
+
+
+const db = config.get('mongoURI');
+
+// Create mongo connection
+const conn = mongoose.createConnection(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+});
+
+// Init gfs
+let gfs;
+
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+
+// Create storage engine
+const storage = new GridFsStorage({
+  url: db,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+
+        if (err) {
+          return reject(err);
+        }
+
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+
+      });
+    });
+  }
+});
+
+const upload = multer({ storage });
+
 
 //---------------------------------------------ADD COURSE DETAIL---------------------------------------------
 
 const addCourseDetail = async (req, res) => {
   try {
-    let { c_name, c_detail, c_img } = req.body;
+    let { c_name, c_detail} = req.body;
+    let address = req.file.filename;
+    let address_id = req.file.id;
 
     if (!c_name || !c_detail) {
       return res
@@ -15,8 +70,9 @@ const addCourseDetail = async (req, res) => {
 
     const newCourse = new Course({
       c_name,
-      c_img,
-      c_detail
+      c_detail,
+      address,
+      address_id
     });
 
     const savedCourse = await newCourse.save();

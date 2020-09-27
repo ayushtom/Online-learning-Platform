@@ -16,11 +16,14 @@ const userRoute = require('./routes/user.route');
 const profileRoute = require('./routes/profile.routes');
 const courseRoute = require('./routes/course.routes');
 const contentRoute=require('./routes/content.routes');
+const videoRoute=require('./routes/video.routes');
 
 app.use('/users', userRoute);
 app.use('/profile', profileRoute);
 app.use('/course', courseRoute);
 app.use('/content',contentRoute);
+app.use('/video',videoRoute);
+
 
 
 app.listen(PORT, () => console.log(`The Server has started on port ${PORT}.`));

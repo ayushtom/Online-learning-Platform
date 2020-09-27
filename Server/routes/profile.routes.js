@@ -12,7 +12,7 @@ const router = require('express').Router();
 const profileControllers = require('../controllers/profile.controller');
 const auth = require('../middleware/auth');
 
-const db = config.get('mongoURI');
+// const db = config.get('mongoURI');
 
 // Create mongo connection
 // const conn = mongoose.createConnection(db, {

@@ -59,18 +59,16 @@ const upload = multer({ storage });
 const add = async (req, res) => {
   try {
     const name=req.body.name;
-    const email=req.body.email;
     const rollno = Number(req.body.rollno);
     const semester = Number(req.body.semester);
-    const address = req.file.filename,
-    const address_id = req.file.id,
+    const address = req.file.filename;
+    const address_id = req.file.id;
 
     if (!name || !rollno || !semester)
       return res.status(400).json({ message: 'Please add all details' });
 
     const newProfile = new Profile({
       name,
-      email,
       rollno,
       semester,
       address,
