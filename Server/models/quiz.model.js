@@ -12,12 +12,6 @@ const quizSchema = new mongoose.Schema({
       ans: { type: String, required: true }
     }
   ],
-<<<<<<< HEAD
-  marks:[
-    {
-      name:{type:String,required:true},
-      marks:{type:Number,required:true}
-=======
   marks: [
     {
       u_id: { type: mongoose.Schema.Types.ObjectId, required: true },
@@ -26,7 +20,6 @@ const quizSchema = new mongoose.Schema({
         got: { type: Number, required: true },
         outOf: { type: Number, required: true }
       }
->>>>>>> 63b3e91ce823a24e398d371459e872dd327a32ef
     }
   ],
   date: { type: Date, default: Date.now() }
