@@ -15,15 +15,18 @@ app.use('/api', require('./routes/profile.routes'));
 const userRoute = require('./routes/user.route');
 const profileRoute = require('./routes/profile.routes');
 const courseRoute = require('./routes/course.routes');
+const contentRoute=require('./routes/content.routes');
 
 app.use('/users', userRoute);
 app.use('/profile', profileRoute);
 app.use('/course', courseRoute);
+app.use('/content',contentRoute);
+
 
 app.listen(PORT, () => console.log(`The Server has started on port ${PORT}.`));
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect('mongodb://localhost:27017/Hackathon', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

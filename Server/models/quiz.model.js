@@ -12,6 +12,12 @@ const quizSchema = new mongoose.Schema({
       ans: { type: String, required: true }
     }
   ],
+  marks:[
+    {
+      name:{type:String,required:true},
+      marks:{type:Number,required:true}
+    }
+  ],
   date: { type: Date, default: Date.now() }
 });
 
